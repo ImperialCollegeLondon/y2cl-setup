@@ -10,6 +10,9 @@ inputs:
   project:
     description: 'Which project template to use.'
     required: true
+  src_dir:
+    description: "The directory with the source to copy."
+    required: true
 
 runs:
   using: "composite"
@@ -23,7 +26,7 @@ runs:
     with:
       path: "user_code"
   - name: Copy user code into local install
-    run: cp -R ./user_code/raytracer/* ./raytracer/
+    run: cp -R ./user_code/${{ INPUT_SRC_DIR }}/* ./${{ INPUT_SRC_DIR }}/
   - name: Delete redundant user code directory
     run: rm -rf ./user_code
   - name: Update Python package tools
