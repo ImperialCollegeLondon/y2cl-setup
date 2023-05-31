@@ -12,14 +12,14 @@ runs:
   - name: Checkout Tests
     uses: actions/checkout@v3
     with:
-      repository: ImperialCollegeLondon/Y2CL_ProjectA_Template
+      repository: ImperialCollegeLondon/Y2CL_ProjectB_Template
       ref: main
   - name: Checkout user code
     uses: actions/checkout@v3
     with:
       path: "user_code"
   - name: Copy user code into local install
-    run: cp -R ./user_code/raytracer/* ./raytracer/
+    run: cp -R ./user_code/thermosnooker/* ./thermosnooker/
     shell: bash
   - name: Delete redundant user code directory
     run: rm -rf ./user_code
