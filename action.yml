@@ -1,0 +1,32 @@
+name: 'y2cl-setup'
+description: 'Setup action for Y2CL'
+author: 'Alexander Richards'
+
+branding:
+  icon: 'terminal'
+  color: 'blue'
+
+inputs:
+  project:
+    description: 'Which project template to use.'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+  - name: Checkout Tests
+    uses: actions/checkout@v3
+    with:
+      repository: "alexanderrichards/Y2CL_Project${{ INPUT_PROJECT}}_Template"
+  - name: Checkout user code
+    uses: actions/checkout@v3
+    with:
+      path: "user_code"
+  - name: Copy user code into local install
+    run: cp -R ./user_code/raytracer/* ./raytracer/
+  - name: Delete redundant user code directory
+    run: rm -rf ./user_code
+  - name: Update Python package tools
+    run: sudo python -m pip install --upgrade pip setuptools wheel
+  - name: Install local code in edit mode ready for testing
+    run: python -m pip install --user -e .
