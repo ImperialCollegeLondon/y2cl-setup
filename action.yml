@@ -27,9 +27,13 @@ runs:
       path: "user_code"
   - name: Copy user code into local install
     run: cp -R ./user_code/${{ INPUT_SRC_DIR }}/* ./${{ INPUT_SRC_DIR }}/
+    shell: bash
   - name: Delete redundant user code directory
     run: rm -rf ./user_code
+    shell: bash
   - name: Update Python package tools
     run: sudo python -m pip install --upgrade pip setuptools wheel
+    shell: bash
   - name: Install local code in edit mode ready for testing
     run: python -m pip install --user -e .
+    shell: bash
