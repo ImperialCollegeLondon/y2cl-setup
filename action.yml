@@ -20,7 +20,7 @@ runs:
   - name: Checkout Tests
     uses: actions/checkout@v3
     with:
-      repository: ImperialCollegeLondon/Y2CL_ProjectA_Template
+      repository: ImperialCollegeLondon/Y2CL_Project${{ env.INPUT_PROJECT }}_Template
       ref: main
   - name: Checkout user code
     uses: actions/checkout@v3
