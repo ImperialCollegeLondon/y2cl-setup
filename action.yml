@@ -13,6 +13,9 @@ inputs:
   src_dir:
     description: "The directory with the source to copy."
     required: true
+  python_version:
+    description: "Python version."
+    required: true
 
 runs:
   using: "composite"
@@ -35,10 +38,10 @@ runs:
   - name: Setup Python
     uses: actions/setup-python@v5.0.0
     with:
-      python-version: '3.11'
+      python-version: "${{ inputs.python_version }}"
   - name: Update Python package tools
-    run: sudo python3.11 -m pip install --upgrade pip setuptools wheel
+    run: "sudo python${{ inputs.python_version }} -m pip install --upgrade pip setuptools wheel"
     shell: bash
   - name: Install local code in edit mode ready for testing
-    run: python3.11 -m pip install --user -e .
+    run: "python${{ inputs.python_version }} -m pip install --user -e ."
     shell: bash
