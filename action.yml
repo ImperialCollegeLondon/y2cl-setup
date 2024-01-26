@@ -40,8 +40,8 @@ runs:
     with:
       python-version: "${{ inputs.python_version }}"
   - name: Update Python package tools
-    run: "sudo python${{ inputs.python_version }} -m pip install --upgrade pip setuptools wheel"
+    run: "sudo python3 -m pip install --upgrade pip setuptools wheel"
     shell: bash
   - name: Install local code in edit mode ready for testing
-    run: "python${{ inputs.python_version }} -m pip install --user -e ."
+    run: "python3 -m pip install --user -e ."
     shell: bash
