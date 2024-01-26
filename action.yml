@@ -23,7 +23,7 @@ runs:
   - name: Checkout Tests
     uses: actions/checkout@v3
     with:
-      repository: "ImperialCollegeLondon/Y2CL_Project${{ inputs.project }}_Template"
+      repository: "ImperialCollegeLondon/Y2CL_${{ inputs.project }}_Template"
       ref: main
   - name: Checkout user code
     uses: actions/checkout@v3
