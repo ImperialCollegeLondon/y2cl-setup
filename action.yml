@@ -32,9 +32,13 @@ runs:
   - name: Delete redundant user code directory
     run: rm -rf ./user_code
     shell: bash
+  - name: Setup Python
+    uses: actions/setup-python@v5.0.0
+    with:
+      python-version: '3.11'
   - name: Update Python package tools
-    run: sudo python -m pip install --upgrade pip setuptools wheel
+    run: sudo python3.11 -m pip install --upgrade pip setuptools wheel
     shell: bash
   - name: Install local code in edit mode ready for testing
-    run: python -m pip install --user -e .
+    run: python3.11 -m pip install --user -e .
     shell: bash
