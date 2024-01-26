@@ -43,5 +43,5 @@ runs:
     run: "python -m pip install --upgrade pip setuptools wheel"
     shell: bash
   - name: Install local code in edit mode ready for testing
-    run: "python -m pip install --user -e ."
+    run: "python -m pip install -e ."
     shell: bash
