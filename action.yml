@@ -21,12 +21,12 @@ runs:
   using: "composite"
   steps:
   - name: Checkout Tests
-    uses: actions/checkout@v3
+    uses: actions/checkout@v4
     with:
       repository: "ImperialCollegeLondon/Y2CL_${{ inputs.project }}_Template"
       ref: main
   - name: Checkout user code
-    uses: actions/checkout@v3
+    uses: actions/checkout@v4
     with:
       path: "user_code"
   - name: Copy user code into local install
