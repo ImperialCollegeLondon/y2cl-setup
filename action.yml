@@ -30,7 +30,9 @@ runs:
     with:
       path: "user_code"
   - name: Copy user code into local install
-    run: "cp -R ./user_code/${{ inputs.src_dir }}/* ./${{ inputs.src_dir }}/"
+    run: |
+      "cp -R ./user_code/${{ inputs.src_dir }}/* ./${{ inputs.src_dir }}/"
+      "cp -R ./user_code/plots_for_marking/* ./plots_for_marking/ || true"
     shell: bash
   - name: Delete redundant user code directory
     run: rm -rf ./user_code
