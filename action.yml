@@ -29,14 +29,12 @@ runs:
     uses: actions/checkout@v6
     with:
       path: "user_code"
-  - name: Copy user code into local install
-    run: "cp -R ./user_code/${{ inputs.src_dir }}/* ./${{ inputs.src_dir }}/"
-    shell: bash
-  - name: Copy user plots into local install
+  - name: Copy user code and plots into local install
     run: |
-      "mkdir -p ./plots_for_marking"
-      "cp -R ./user_code/plots_for_marking/* ./plots_for_marking/ || true"
-    shell: bash  
+      cp -R ./user_code/${{ inputs.src_dir }}/* ./${{ inputs.src_dir }}/
+      mkdir -p ./plots_for_marking
+      cp -R ./user_code/plots_for_marking/* ./plots_for_marking/ || true
+    shell: bash
   - name: Delete redundant user code directory
     run: rm -rf ./user_code
     shell: bash
@@ -45,9 +43,9 @@ runs:
     with:
       python-version: "${{ inputs.python_version }}"
   - name: Update Python package tools
-    run: "python -m pip install --upgrade pip setuptools wheel"
+    run: python -m pip install --upgrade pip setuptools wheel
     shell: bash
   - name: Install local code in edit mode ready for testing
-    run: "python -m pip install -e ."
+    run: python -m pip install -e .
     shell: bash
 
